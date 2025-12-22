@@ -4,7 +4,7 @@
   "description": "Namaste React live Course",
   "scripts": {
     "start": "parcel index.html --port 3000",
-    "build": "parcel build index.html",
+    "build": "parcel build ./index.html --public-url ./",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
     "test": "jest"
@@ -15,7 +15,7 @@
   },
   "author": "Tannu Giri",
   "license": "ISC",
-  "homepage": "https://tannugiri11.github.io/Swiggy_app",
+  "homepage": "https://tannugiri11.github.io/Swiggy_app/",
   "devDependencies": {
     "gh-pages": "^6.3.0",
     "parcel": "^2.8.2",
