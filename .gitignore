@@ -5,6 +5,7 @@
 
 # Node artifact files
 node_modules/
+dist/
 
 # Compiled Java class files
 *.class
@@ -48,10 +49,11 @@ Thumbs.db
 
 # parcel files
 .parcel-cache
+.dist
 
 # env development/production local
 .env.development.local
 .env.local
 .env.development
 .env.production.local
-.env.production
+.env.productiondist/
