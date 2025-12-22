@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 
-const { useState, useEffect } = require("react")
 
 const useOnline = () => {
     const [onlineStatus, setOnlineStatus] = useState(true);

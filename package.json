@@ -5,6 +5,8 @@
   "scripts": {
     "start": "parcel index.html --port 3000",
     "build": "parcel build index.html",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "test": "jest"
   },
   "repository": {
@@ -13,8 +15,9 @@
   },
   "author": "Tannu Giri",
   "license": "ISC",
-  "homepage": "https://github.com/tannugiri11/Swiggy_app",
+  "homepage": "https://tannugiri11.github.io/Swiggy_app",
   "devDependencies": {
+    "gh-pages": "^6.3.0",
     "parcel": "^2.8.2",
     "process": "^0.11.10"
   },

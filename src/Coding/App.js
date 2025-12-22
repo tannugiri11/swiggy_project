@@ -1,7 +1,11 @@
-// Chapter 09 - Optimizing our App
-
-import React, {lazy, Suspense } from "react";
+import React, { lazy, Suspense } from "react";
 import ReactDOM from "react-dom/client";
+import {
+  createHashRouter,
+  RouterProvider,
+  Outlet,
+} from "react-router-dom";
+
 import Header from "./Components/Header";
 import Body from "./Components/Body";
 import Footer from "./Components/Footer";
@@ -10,70 +14,37 @@ import Error from "./Components/Error";
 import Contact from "./Components/Contact";
 import Login from "./Components/Login";
 import RestaurantMenu from "./Components/RestaurantMenu";
-import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom"; // for routing our page import createBrowserRouter and RouterProvider for providing router & Outlet for children component for nested routing
 
-/* My Food App structure will look like this, 
-            1) Header
-                - Logo
-                - Nav Items(right side)
-                - Cart
-            2) Body
-                - Search bar
-                - Restaurants List
-                    - Restaurant card
-                        - Image
-                        - Name
-                        - Rating
-            3) Footer
-                - Links
-                - Copyrights
-       
-*/
-
-// AppLayout component to render: Header, Outlet(it contain children component like body, About, Restaurant Menu etc) and Footer Component
-
-const Grocery = lazy(() =>import("./Components/Grocery"))
+const Grocery = lazy(() => import("./Components/Grocery"));
 
 const AppLayout = () => {
   return (
-    <React.Fragment>
-      <div className="app">
-        <Header />
-        <Outlet />
-        <Footer />
-      </div>
-    </React.Fragment>
+    <div className="app">
+      <Header />
+      <Outlet />
+      <Footer />
+    </div>
   );
 };
 
-// call createBrowserRouter for routing different pages
-const appRouter = createBrowserRouter([
+const appRouter = createHashRouter([
   {
-    path: "/", // show path for routing
-    element: <AppLayout />, // show component for particular path
-    errorElement: <Error />, // show error component for path is different
+    path: "/",
+    element: <AppLayout />,
+    errorElement: <Error />,
     children: [
-      // show children component for routing
-      {
-        path: "/",
-        element: <Body />,
-      },
+      { path: "/", element: <Body /> },
       {
         path: "grocery",
-        element: <Suspense >< Grocery /></Suspense>,
+        element: (
+          <Suspense fallback={<h2>Loading...</h2>}>
+            <Grocery />
+          </Suspense>
+        ),
       },
-      {
-        path: "about",
-        element: <About />,
-      },
-      {
-        path: "contact",
-        element: <Contact />,
-      },
-      {
-        path: "restaurant/:resId",
-        element: <RestaurantMenu />,
-      },
+      { path: "about", element: <About /> },
+      { path: "contact", element: <Contact /> },
+      { path: "restaurant/:resId", element: <RestaurantMenu /> },
     ],
   },
   {
@@ -81,5 +52,6 @@ const appRouter = createBrowserRouter([
     element: <Login />,
   },
 ]);
+
 const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(<RouterProvider router={appRouter} />); // render RouterProvider and use router as props and pass value appRouter
+root.render(<RouterProvider router={appRouter} />);
