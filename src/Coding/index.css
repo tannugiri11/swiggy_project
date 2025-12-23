@@ -424,17 +424,16 @@ a {
   border-radius: 5px;
 }
 
-.add-btn {
+.add-btn button {
   background-color: var(--orange);
   color: var(--text-color);
   padding: 8px 25px;
   cursor: pointer;
-  outline: none;
-  border-color: var(--dark-orange);
-  margin-top: 10px;
   border-radius: 5px;
+  border: 1px solid var(--dark-orange);
   font-size: large;
 }
+
 /* Restaurant Menu End */
 
 /*Shimmer Card CSS Start*/
@@ -737,7 +736,7 @@ a {
 
 .profile-container {
   flex: 0.8;
-  padding: 20px 10px;
+  padding: 100px 10px;
   margin: 20px;
   border-radius: 5px;
   overflow: hidden;
@@ -1433,11 +1432,176 @@ a {
     width: 170px;
   }
 
-  .profile-repo-container .profile-repo h1 {
+  .profile-container{
     margin: 20px 15px 0px;
+    padding-top: 60px;
   }
 
   .profile-repo .profile-repo-items h3 a {
     font-size: small;
   }
 }
+
+/* Profile Contact Section CSS Start */
+.profile-contact {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.profile-contact h3 {
+  font-size: 22px;
+  margin-bottom: 15px;
+  color: var(--light-text-title);
+}
+
+.profile-contact ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.profile-contact li {
+  font-size: 16px;
+  margin: 10px 0;
+  color: var(--light-text-color);
+}
+
+.profile-contact li a {
+  color: var(--light-blue);
+  font-weight: 600;
+}
+
+.profile-contact li a:hover {
+  color: var(--dark-orange);
+  text-decoration: underline;
+}
+/* Cart Page CSS Start */
+.cart-container {
+  margin: 120px auto 40px;
+  max-width: 800px;
+  padding: 20px;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 6px 6px 10px -1px rgba(0, 0, 0, 0.2);
+}
+
+.cart-title {
+  text-align: center;
+  margin-bottom: 20px;
+  color: var(--light-text-title);
+}
+
+.cart-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #eee;
+  padding: 15px 0;
+}
+
+.cart-item-img {
+  width: 80px;
+  height: 80px;
+  border-radius: 5px;
+}
+
+.cart-item-details {
+  flex: 1;
+  margin-left: 15px;
+}
+
+.cart-quantity button {
+  padding: 5px 10px;
+  margin: 0 5px;
+  background: var(--orange);
+  border: none;
+  color: #fff;
+  cursor: pointer;
+}
+
+.cart-remove {
+  background: transparent;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+  color: var(--light-red);
+}
+
+.cart-summary {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.cart-checkout {
+  background: var(--dark-green);
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+.cart-clear {
+  background: var(--light-red);
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+}
+
+.cart-empty {
+  margin-top: 140px;
+  text-align: center;
+}
+
+.add-btn-container {
+  width: 110px;        /* 🔥 fixed width */
+  height: 38px;        /* 🔥 fixed height */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* ADD button */
+.add-btn {
+  width: 100%;
+  height: 100%;
+  background-color: var(--orange);
+  color: var(--text-color);
+  border: 1px solid var(--dark-orange);
+  border-radius: 5px;
+  font-size: large;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* Quantity controller */
+.qty-controller {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--orange);
+  border: 1px solid var(--dark-orange);
+  border-radius: 5px;
+  padding: 0 6px;
+}
+
+.qty-controller button {
+  background: transparent;
+  border: none;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  color: var(--text-color);
+}
+
+.qty-controller span {
+  font-weight: bold;
+  font-size: 16px;
+}
+
+
+
+

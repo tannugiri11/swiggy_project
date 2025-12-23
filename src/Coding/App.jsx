@@ -14,16 +14,21 @@ import Error from "./Components/Error";
 import Contact from "./Components/Contact";
 import Login from "./Components/Login";
 import RestaurantMenu from "./Components/RestaurantMenu";
+import Profile from "./Components/Profile";
+import Cart from "./Components/Cart";
+import { CartProvider } from "./Context/CartContext";
 
 const Grocery = lazy(() => import("./Components/Grocery"));
 
 const AppLayout = () => {
   return (
+    <CartProvider>
     <div className="app">
       <Header />
       <Outlet />
       <Footer />
     </div>
+    </CartProvider>
   );
 };
 
@@ -45,6 +50,8 @@ const appRouter = createHashRouter([
       { path: "about", element: <About /> },
       { path: "contact", element: <Contact /> },
       { path: "restaurant/:resId", element: <RestaurantMenu /> },
+      { path: "about/profile", element: <Profile /> },
+      { path:"cart", element: <Cart/> }
     ],
   },
   {

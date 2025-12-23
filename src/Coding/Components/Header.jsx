@@ -5,6 +5,7 @@ import useOnline from "../Hooks/useOnline";
 import useAuth from "../Hooks/useAuth";
 import useLocalStorage from "../Hooks/useLocalStorage";
 import { useEffect } from "react";
+import { useCart } from "../Context/CartContext"
 
 // Title component for display logo
 const Title = () => (
@@ -27,6 +28,8 @@ const Header = () => {
 
   // call custom hook useAuth for user is loggedin or not
   const [isLoggedin, setIsLoggedin] = useAuth();
+  const { cartItems } = useCart();
+const cartCount = cartItems.reduce((sum, i) => sum + i.quantity, 0);
 
   useEffect(() => {
     // if value of getLocalStorage is equal to null setIsLoggedin to false
@@ -62,9 +65,12 @@ const Header = () => {
           <li>
             <Link to="/grocery">Grocery</Link>
           </li>
-          <li>
-            <i className="fa-solid fa-cart-shopping"></i>
-          </li>
+<li>
+  <Link to="/cart">
+    <i className="fa-solid fa-cart-shopping"></i>
+    {cartCount > 0 && <span className="cart-badge">{cartCount}</span>}
+  </Link>
+</li>
           <li>
             {/* use conditional rendering for login and logout */}
             {isLoggedin ? (

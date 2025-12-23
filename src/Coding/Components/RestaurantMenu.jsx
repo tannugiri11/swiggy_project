@@ -10,6 +10,8 @@ import { MenuShimmer } from "./Shimmer";
 import useResMenuData from "../Hooks/useResMenuData"; // imported custom hook useResMenuData which gives restaurant Menu data from swigy api
 import useOnline from "../Hooks/useOnline"; // imported custom hook useOnline which checks user is online or not
 import UserOffline from "./UserOffline";
+import { useCart } from "../Context/CartContext";
+
 
 const RestaurantMenu = () => {
   const { resId } = useParams(); // call useParams and get value of restaurant id using object destructuring
@@ -19,6 +21,14 @@ const RestaurantMenu = () => {
     RESTAURANT_TYPE_KEY,
     MENU_ITEM_TYPE_KEY
   );
+
+  const {
+  addToCart,
+  incrementItem,
+  decrementItem,
+  getItemQuantity,
+} = useCart();
+
 
   const isOnline = useOnline();
 
@@ -91,7 +101,32 @@ const RestaurantMenu = () => {
                       alt={item?.name}
                     />
                   )}
-                  <button className="add-btn"> ADD +</button>
+                  <div className="add-btn-container">
+  {getItemQuantity(item.id) === 0 ? (
+    <button
+      className="add-btn"
+      onClick={() =>
+        addToCart({
+          id: item.id,
+          name: item.name,
+          price: item.price,
+          defaultPrice: item.defaultPrice,
+          imageId: item.imageId,
+        })
+      }
+    >
+      ADD
+    </button>
+  ) : (
+    <div className="qty-controller">
+      <button onClick={() => decrementItem(item.id)}>-</button>
+      <span>{getItemQuantity(item.id)}</span>
+      <button onClick={() => incrementItem(item.id)}>+</button>
+    </div>
+  )}
+</div>
+
+
                 </div>
               </div>
             ))}
